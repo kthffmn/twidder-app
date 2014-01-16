@@ -45,7 +45,7 @@ class AnswersController < ApplicationController
     @user = User.find(params[:user_id])
     respond_to do |format|
       if @answer.save
-        format.html { redirect_to user_answer_path(@user, answer), notice: 'Answer was successfully created.' }
+        format.html { redirect_to user_answer_path, notice: 'Answer was successfully created.' }
         format.json { render json: @answer, status: :created, location: @answer }
       else
         format.html { render action: "new" }
