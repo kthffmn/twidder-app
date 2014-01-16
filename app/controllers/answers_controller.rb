@@ -14,7 +14,7 @@ class AnswersController < ApplicationController
   # GET /answers/1.json
   def show
     @answer = Answer.find(params[:id])
-    @user = User.find(params[:user_id])
+    @user = User.find(params[:id])
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @answer }
@@ -34,17 +34,18 @@ class AnswersController < ApplicationController
 
   # GET /answers/1/edit
   def edit
-    @user = User.find(params[:user_id])
     @answer = Answer.find(params[:id])
+    @user = User.find(params[:user_id])
   end
 
   # POST /answers
   # POST /answers.json
   def create
     @answer = Answer.new(params[:answer])
+    @user = User.find(params[:user_id])
     respond_to do |format|
       if @answer.save
-        format.html { redirect_to @answer, notice: 'Answer was successfully created.' }
+        format.html { redirect_to user_answer_path, notice: 'Answer was successfully created.' }
         format.json { render json: @answer, status: :created, location: @answer }
       else
         format.html { render action: "new" }
@@ -60,7 +61,7 @@ class AnswersController < ApplicationController
     @user = User.find(params[:user_id])
     respond_to do |format|
       if @answer.update_attributes(params[:answer])
-        format.html { redirect_to @answer, notice: 'Answer was successfully updated.' }
+        format.html { redirect_to user_answer_path, notice: 'Answer was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -73,10 +74,11 @@ class AnswersController < ApplicationController
   # DELETE /answers/1.json
   def destroy
     @answer = Answer.find(params[:id])
+    @user = User.find(params[:user_id])
     @answer.destroy
 
     respond_to do |format|
-      format.html { redirect_to answers_url }
+      format.html { redirect_to user_answers_url }
       format.json { head :no_content }
     end
   end
