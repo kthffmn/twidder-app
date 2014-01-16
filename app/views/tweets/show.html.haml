@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Celebrity:
+  = @tweet.celebrity_id
+%p
+  %b Tweet:
+  = @tweet.tweet
+%p
+  %b Answer:
+  = @tweet.answer
+
+= link_to 'Edit', edit_tweet_path(@tweet)
+\|
+= link_to 'Back', tweets_path
