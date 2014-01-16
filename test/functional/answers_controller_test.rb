@@ -21,7 +21,7 @@ class AnswersControllerTest < ActionController::TestCase
       post :create, answer: { correct: @answer.correct, guess: @answer.guess, tweet_id: @answer.tweet_id, user_id: @answer.user_id }
     end
 
-    assert_redirected_to answer_path(assigns(:answer))
+    assert_redirected_to user_answer_path(assigns(:answer))
   end
 
   test "should show answer" do
@@ -36,7 +36,7 @@ class AnswersControllerTest < ActionController::TestCase
 
   test "should update answer" do
     put :update, id: @answer, answer: { correct: @answer.correct, guess: @answer.guess, tweet_id: @answer.tweet_id, user_id: @answer.user_id }
-    assert_redirected_to answer_path(assigns(:answer))
+    assert_redirected_to user_answer_path(assigns(:answer))
   end
 
   test "should destroy answer" do
@@ -44,6 +44,6 @@ class AnswersControllerTest < ActionController::TestCase
       delete :destroy, id: @answer
     end
 
-    assert_redirected_to answers_path
+    assert_redirected_to user_answers_path
   end
 end
