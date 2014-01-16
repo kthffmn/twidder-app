@@ -1,4 +1,5 @@
 Twidder2::Application.routes.draw do
+  # get '/users/:id/answers' => 'answers#index'
   resources :users do
     resources :answers 
   end
