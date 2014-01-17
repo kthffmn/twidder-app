@@ -62,6 +62,11 @@ Answer.create(
 
 Answer.create(
                       tweet_id: 2,       
+                      user_id: 2,
+                      guess: "Live your dream and be creative.")
+
+Answer.create(
+                      tweet_id: 2,       
                       user_id: 3,
                       guess: "Happy Birthday D.wade")
 Answer.create(
