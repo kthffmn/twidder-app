@@ -1,5 +1,5 @@
 class Answer < ActiveRecord::Base
-  attr_accessible :correct, :guess, :tweet_id, :user_id
+  attr_accessible :correct, :guess, :tweet_id, :user_id, :user, :tweet
   belongs_to :user
   belongs_to :tweet
 

@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :email, :name, :password, :score
+  attr_accessible :email, :name, :password, :score, :answers
   has_many :answers
 
   validates :name, :presence => true, :format => {:with => /[a-z]/i, :message => "must only have letters"}, :length => { :minimum => 2, :message => "must have at least 2 characters" } 
