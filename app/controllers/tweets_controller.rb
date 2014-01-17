@@ -41,8 +41,8 @@ class TweetsController < ApplicationController
   # POST /tweets
   # POST /tweets.json
   def create
-    @tweet = Tweet.new(params[:tweet])
     @celebrity = Celebrity.find(params[:celebrity_id])
+    @tweet = @celebrity.tweets.build(params[:tweet])
     respond_to do |format|
       if @tweet.save
         format.html { redirect_to celebrity_tweet_path(@celebrity, @tweet), notice: 'Tweet was successfully created.' }
