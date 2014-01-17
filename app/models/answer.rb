@@ -3,5 +3,5 @@ class Answer < ActiveRecord::Base
   belongs_to :user
   belongs_to :tweet
 
-  	validates :guess, :presence => true, :length => { :maximum => 200, :message => "must be between 1 and 200 characters"}
+	validates :guess, :presence => true, :length => { :maximum => 200, :message => "must be between 1 and 200 characters"}
 end
