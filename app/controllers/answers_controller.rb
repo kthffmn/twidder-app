@@ -43,15 +43,15 @@ class AnswersController < ApplicationController
   def create
     @user = User.find(params[:user_id])
     @answer = @user.answers.build(params[:answer])
-    respond_to do |format|
-      if @answer.save
-        format.html { redirect_to user_answer_path(@user, @answer), notice: 'Answer was successfully created.' }
-        format.json { render json: @answer, status: :created, location: @answer }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @answer.errors, status: :unprocessable_entity }
-      end
-    end
+    # respond_to do |format|
+    #   if @answer.save
+    #     format.html { redirect_to user_answer_path(@user, @answer), notice: 'Answer was successfully created.' }
+    #     format.json { render json: @answer, status: :created, location: @answer }
+    #   else
+    #     format.html { render action: "new" }
+    #     format.json { render json: @answer.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # PUT /answers/1
