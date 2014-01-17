@@ -2,8 +2,8 @@ class TweetsController < ApplicationController
   # GET /tweets
   # GET /tweets.json
   def index
-    @tweets = Tweet.all
-
+    @celebrity = Celebrity.find(params[:celebrity_id])
+    @tweets = @celebrity.tweets
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @tweets }
@@ -14,7 +14,7 @@ class TweetsController < ApplicationController
   # GET /tweets/1.json
   def show
     @tweet = Tweet.find(params[:id])
-
+    @celebrity = Celebrity.find(params[:celebrity_id])
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @tweet }
@@ -25,7 +25,7 @@ class TweetsController < ApplicationController
   # GET /tweets/new.json
   def new
     @tweet = Tweet.new
-
+    @celebrity = Celebrity.find(params[:celebrity_id])
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @tweet }
@@ -35,16 +35,17 @@ class TweetsController < ApplicationController
   # GET /tweets/1/edit
   def edit
     @tweet = Tweet.find(params[:id])
+    @celebrity = Celebrity.find(params[:celebrity_id])
   end
 
   # POST /tweets
   # POST /tweets.json
   def create
-    @tweet = Tweet.new(params[:tweet])
-
+    @celebrity = Celebrity.find(params[:celebrity_id])
+    @tweet = @celebrity.tweets.build(params[:tweet])
     respond_to do |format|
       if @tweet.save
-        format.html { redirect_to @tweet, notice: 'Tweet was successfully created.' }
+        format.html { redirect_to celebrity_tweet_path(@celebrity, @tweet), notice: 'Tweet was successfully created.' }
         format.json { render json: @tweet, status: :created, location: @tweet }
       else
         format.html { render action: "new" }
@@ -57,10 +58,10 @@ class TweetsController < ApplicationController
   # PUT /tweets/1.json
   def update
     @tweet = Tweet.find(params[:id])
-
+    @celebrity = Celebrity.find(params[:celebrity_id])
     respond_to do |format|
       if @tweet.update_attributes(params[:tweet])
-        format.html { redirect_to @tweet, notice: 'Tweet was successfully updated.' }
+        format.html { redirect_to celebrity_tweet_path, notice: 'Tweet was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -73,10 +74,10 @@ class TweetsController < ApplicationController
   # DELETE /tweets/1.json
   def destroy
     @tweet = Tweet.find(params[:id])
+    @celebrity = Celebrity.find(params[:celebrity_id])
     @tweet.destroy
-
     respond_to do |format|
-      format.html { redirect_to tweets_url }
+      format.html { redirect_to celebrity_tweets_url }
       format.json { head :no_content }
     end
   end

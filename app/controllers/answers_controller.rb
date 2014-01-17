@@ -2,8 +2,8 @@ class AnswersController < ApplicationController
   # GET /answers
   # GET /answers.json
   def index
-    @answers = Answer.all
     @user = User.find(params[:user_id])
+    @answers = @user.answers
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @answers }
@@ -14,7 +14,7 @@ class AnswersController < ApplicationController
   # GET /answers/1.json
   def show
     @answer = Answer.find(params[:id])
-    @user = User.find(params[:id])
+    @user = User.find(params[:user_id])
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @answer }
@@ -41,11 +41,11 @@ class AnswersController < ApplicationController
   # POST /answers
   # POST /answers.json
   def create
-    @answer = Answer.new(params[:answer])
     @user = User.find(params[:user_id])
+    @answer = @user.answers.build(params[:answer])
     respond_to do |format|
       if @answer.save
-        format.html { redirect_to user_answer_path, notice: 'Answer was successfully created.' }
+        format.html { redirect_to user_answer_path(@user, @answer), notice: 'Answer was successfully created.' }
         format.json { render json: @answer, status: :created, location: @answer }
       else
         format.html { render action: "new" }
@@ -61,7 +61,7 @@ class AnswersController < ApplicationController
     @user = User.find(params[:user_id])
     respond_to do |format|
       if @answer.update_attributes(params[:answer])
-        format.html { redirect_to user_answer_path, notice: 'Answer was successfully updated.' }
+        format.html { redirect_to user_answer_path(@user, @answer), notice: 'Answer was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -76,7 +76,6 @@ class AnswersController < ApplicationController
     @answer = Answer.find(params[:id])
     @user = User.find(params[:user_id])
     @answer.destroy
-
     respond_to do |format|
       format.html { redirect_to user_answers_url }
       format.json { head :no_content }
