@@ -17,19 +17,37 @@ user_2 = User.create(name: "Katie Hoffman",
                         password: "katietest",
                         score: 3,
                         email: "ktahoffman@gmail.com")
+user_3 = User.create(name: "Armando Amador",
+                        id: 3
+                        password: "armandotest",
+                        score: 100,
+                        email: "arm.amador@gmail.com")
 # celebrities
 celebrity_1 = Celebrity.create(
                         id: 1,
                         name: "Justin Beiber",
                         handle: "@justinbieber")
+celebrity_2 = Celebrity.create(
+                        id: 2,
+                        name: "Lebron James",
+                        handle: "@KingJames")
+
 # tweets
 tweet_1 = Tweet.create(id: 1,
                       celebrity_id: 1,        
                       tweet: "live your dream. be creative")
+tweet_2 = Tweet.create(id: 1,
+                      celebrity_id: 2,        
+                      tweet: "Happy Bday D.wade")
 
 # answers
 answer_1 = Answer.create(id: 1,
                       celebrity_id: 1,       
                       user_id: 2,
                       guess: "Live your dream and be creative.")
+
+answer_2 = Answer.create(id: 2,
+                      celebrity_id: 2,       
+                      user_id: 3,
+                      guess: "Happy Birthday D.wade")
 
