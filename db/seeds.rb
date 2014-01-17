@@ -13,7 +13,7 @@ user_1 = User.create(name: "Anisha Ramnani",
 												email: "anisha.ramnnani@gmail.com")
 
 user_2 = User.create(name: "Katie Hoffman",
-                        id: 2
+                        id: 2,
                         password: "katietest",
                         score: 3,
                         email: "ktahoffman@gmail.com")
