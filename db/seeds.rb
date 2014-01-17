@@ -8,6 +8,7 @@
 
 # users
 user_1 = User.create(name: "Anisha Ramnani",
+                        id: 1,
 												password: "anishatest",
 												score: 1,
 												email: "anisha.ramnnani@gmail.com")
@@ -18,12 +19,12 @@ user_2 = User.create(name: "Katie Hoffman",
                         score: 3,
                         email: "ktahoffman@gmail.com")
 user_3 = User.create(name: "Armando Amador",
-                        id: 3
+                        id: 3,
                         password: "armandotest",
                         score: 100,
                         email: "arm.amador@gmail.com")
 user_4 = User.create(name: "David Gabeau",
-                        id: 4
+                        id: 4,
                         password: "davidtest",
                         score: 999,
                         email: "david.gabeau@gmail.com")
