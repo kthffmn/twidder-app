@@ -44,27 +44,32 @@ Celebrity.create(
                         handle: "@itsBroStinson")
 
 # tweets
-Tweet.create(id: 1,
+Tweet.create(
                       celebrity_id: 1,        
                       tweet: "live your dream. be creative")
-Tweet.create(id: 2,
+Tweet.create(
                       celebrity_id: 2,        
                       tweet: "Happy Bday D.wade")
-Tweet.create(id: 3,
+Tweet.create(
                       celebrity_id: 3,        
                       tweet: "Legiondary.")
 
 # answers
-Answer.create(id: 1,
-                      celebrity_id: 1,       
+Answer.create(
+                      tweet_id: 1,       
                       user_id: 2,
                       guess: "Live your dream and be creative.")
 
-Answer.create(id: 2,
-                      celebrity_id: 2,       
+Answer.create(
+                      tweet_id: 2,       
+                      user_id: 2,
+                      guess: "Live your dream and be creative.")
+
+Answer.create(
+                      tweet_id: 2,       
                       user_id: 3,
                       guess: "Happy Birthday D.wade")
-Answer.create(id: 3,
-                      celebrity_id: 3,       
+Answer.create(
+                      tweet_id: 3,       
                       user_id: 3,
                       guess: "Legendary.")

@@ -1,5 +1,10 @@
 Twidder2::Application.routes.draw do
-  # get '/users/:id/answers' => 'answers#index'
+  get "users/new"
+
+  # root  'static_pages#home'
+  match '/signup', to: 'users#new',         via: 'get'
+  match '/home',   to: 'static_pages#home', via: 'get'
+
   resources :users do
     resources :answers 
   end
