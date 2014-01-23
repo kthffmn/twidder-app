@@ -10,12 +10,14 @@ class Scraper
 
   def get_names
     array = html.search(".name").collect {|a|a.text}
-    modified_array = array[0..-2]
+    # modified_array = array[0..-2]
+    modified_array = array[0..1]
   end
 
   def get_handles
     array = html.search(".uname").collect{|h|h.text}
-    modified_array = array[0..-2]
+    #modified_array = array[0..-2]
+    modified_array = array[0..1]
   end
 
   def associate_name_with_handle
@@ -24,7 +26,7 @@ class Scraper
     new_hash = {}
     counter = 0
     name_array.each do |name|
-      new_hash[name_array[counter]] = handle_array[counter]
+      new_hash[name_array[counter]] = handle_array[counter].gsub("@","")
       counter += 1
     end
     new_hash
@@ -34,7 +36,7 @@ class Scraper
     associate_name_with_handle.each do |name, handle|
       Celebrity.create(
         :name => name, 
-        :handle => handle,
+        :handle => handle
       )
     end
   end
