@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(:version => 20140116170418) do
     t.integer  "celebrity_id"
     t.string   "tweet"
     t.string   "answer"
+    t.string   "url"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
   end
