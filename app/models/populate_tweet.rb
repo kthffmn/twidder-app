@@ -1,4 +1,4 @@
-class Populatetweet 
+class PopulateTweet 
   attr_reader :client, :celebrity
 
   def initialize(celebrity)

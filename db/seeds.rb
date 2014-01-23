@@ -29,47 +29,52 @@ User.create(name: "David Gabeau",
                         email: "david.gabeau@gmail.com")
 
 
-# celebrities
-Celebrity.create(
+# # celebrities
+ Celebrity.create(
                         id: 1,
-                        name: "Justin Beiber",
-                        handle: "@justinbieber")
-Celebrity.create(
-                        id: 2,
-                        name: "Lebron James",
-                        handle: "@KingJames")
-Celebrity.create(
-                        id: 3,
-                        name: "Barney Stinson",
-                        handle: "@itsBroStinson")
+                        name: "Twidder App",
+                        handle: "@twidder_app")
 
-# tweets
-Tweet.create(
-                      celebrity_id: 1,        
-                      tweet: "live your dream. be creative")
-Tweet.create(
-                      celebrity_id: 2,        
-                      tweet: "Happy Bday D.wade")
-Tweet.create(
-                      celebrity_id: 3,        
-                      tweet: "Legiondary.")
+# Celebrity.create(
+#                         id: 1,
+#                         name: "Justin Beiber",
+#                         handle: "@justinbieber")
+# Celebrity.create(
+#                         id: 2,
+#                         name: "Lebron James",
+#                         handle: "@KingJames")
+# Celebrity.create(
+#                         id: 3,
+#                         name: "Barney Stinson",
+#                         handle: "@itsBroStinson")
 
-# answers
-Answer.create(
-                      tweet_id: 1,       
-                      user_id: 2,
-                      guess: "Live your dream and be creative.")
+# # tweets
+# Tweet.create(
+#                       celebrity_id: 1,        
+#                       tweet: "live your dream. be creative")
+# Tweet.create(
+#                       celebrity_id: 2,        
+#                       tweet: "Happy Bday D.wade")
+# Tweet.create(
+#                       celebrity_id: 3,        
+#                       tweet: "Legiondary.")
 
-Answer.create(
-                      tweet_id: 2,       
-                      user_id: 2,
-                      guess: "Live your dream and be creative.")
+# # answers
+# Answer.create(
+#                       tweet_id: 1,       
+#                       user_id: 2,
+#                       guess: "Live your dream and be creative.")
 
-Answer.create(
-                      tweet_id: 2,       
-                      user_id: 3,
-                      guess: "Happy Birthday D.wade")
-Answer.create(
-                      tweet_id: 3,       
-                      user_id: 3,
-                      guess: "Legendary.")
+# Answer.create(
+#                       tweet_id: 2,       
+#                       user_id: 2,
+#                       guess: "Live your dream and be creative.")
+
+# Answer.create(
+#                       tweet_id: 2,       
+#                       user_id: 3,
+#                       guess: "Happy Birthday D.wade")
+# Answer.create(
+#                       tweet_id: 3,       
+#                       user_id: 3,
+#                       guess: "Legendary.")

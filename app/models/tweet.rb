@@ -4,7 +4,7 @@ class Tweet < ActiveRecord::Base
   has_many :answers
 
 	Celebrity.all.each do |celebrity|
-		Populatetweet.new(celebrity)
+		PopulateTweet.new(celebrity).add_to_database
 	end 
 end
 
