@@ -1,6 +1,4 @@
-require './celebrity'
-
-class PopulateTweet 
+class Populatetweet 
   attr_reader :client, :celebrity
 
   def initialize(celebrity)
