@@ -13,7 +13,7 @@ gem 'haml-rails'
 gem 'gingerice'
 gem 'twitter'
 gem 'swearjar'
-
+gem 'nokogiri'
 
 # Gems used only for assets and not required
 # in production environments by default.
