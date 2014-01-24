@@ -24,6 +24,7 @@ class AnswersController < ApplicationController
   # GET /answers/new
   # GET /answers/new.json
   def new
+    @my_tweet = Tweet.all.sample
     @answer = Answer.new
     @user = User.find(params[:user_id])
     respond_to do |format|
@@ -41,9 +42,6 @@ class AnswersController < ApplicationController
   # POST /answers
   # POST /answers.json
   def create
-    my_tweet_class = Tweet.all.sample
-    @my_tweet = my_tweet_class.tweet
-    @my_url = my_tweet_class.url
     @user = User.find(params[:user_id])
     @answer = @user.answers.build(params[:answer])
     respond_to do |format|

@@ -1,13 +1,12 @@
 <h1>Twidder</h1>
 
-<h1><%= @my_tweet %></h1>
-<h1><%= @my_url %></h1>
-
-<blockquote class="twitter-tweet" lang="en">
-	<p><%= @my_tweet %></p>
-	<a href=<%= @my_url %>>link</a>
-</blockquote>
-<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<div class="tweet" align="center">
+	<blockquote class="twitter-tweet" lang="en">
+		<p><%= @my_tweet.tweet %></p>
+		<a href=<%= @my_tweet.url %>>link</a>
+	</blockquote>
+	<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
 
 <%= render 'form' %>
 
