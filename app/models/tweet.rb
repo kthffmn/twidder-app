@@ -3,8 +3,8 @@ class Tweet < ActiveRecord::Base
   belongs_to :celebrity
   has_many :answers
 
-	Celebrity.all.each do |celebrity|
-		PopulateTweet.new(celebrity).add_to_database
-	end 
+	# Celebrity.all.each do |celebrity|
+	# 	PopulateTweet.new(celebrity).add_to_database
+	# end 
 end
 

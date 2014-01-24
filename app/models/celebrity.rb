@@ -3,5 +3,5 @@ class Celebrity < ActiveRecord::Base
   has_many :tweets
   has_many :answers, through: :tweets
 
-  Scraper.new.add_to_database
+  # Scraper.new.add_to_database
 end

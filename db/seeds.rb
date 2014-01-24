@@ -29,11 +29,11 @@ User.create(name: "David Gabeau",
                         email: "david.gabeau@gmail.com")
 
 
-# # celebrities
- Celebrity.create(
-                        id: 1,
-                        name: "Twidder App",
-                        handle: "@twidder_app")
+#  celebrities
+#  Celebrity.create(
+#                         id: 1,
+#                         name: "Twidder App",
+#                         handle: "@twidder_app")
 
 # Celebrity.create(
 #                         id: 1,
