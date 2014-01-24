@@ -26,7 +26,7 @@ class Scraper
     new_hash = {}
     counter = 0
     name_array.each do |name|
-      new_hash[name_array[counter]] = handle_array[counter].gsub("@","")
+      new_hash[name_array[counter]] = handle_array[counter]
       counter += 1
     end
     new_hash
