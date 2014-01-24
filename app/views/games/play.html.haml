@@ -1,0 +1,24 @@
+%h1
+  Twidder
+
+<div class="tweet" align="center">
+        <blockquote class="twitter-tweet" lang="en">
+                <p><%= @tweet.tweet %></p>
+                <a href=<%= @tweet.url %>>link</a>
+        </blockquote>
+        <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+= form_for [@user, @game] do |f|
+  - if @answer.guess.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@answer.errors.count, "error")} prohibited this answer from being saved:"
+      %ul
+        - @answer.errors.full_messages.each do |msg|
+          %li= msg
+  .field
+    = f.label :guess
+    = f.text_field :guess
+  .actions
+    = f.submit 'Save'
+
