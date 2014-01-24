@@ -5,9 +5,14 @@ Twidder2::Application.routes.draw do
   match '/signup', to: 'users#new',         via: 'get'
   match '/home',   to: 'static_pages#home', via: 'get'
 
+
   resources :users do
     resources :answers 
   end
+
+  # root  'games'
+  match '/users/:user_id/games/play', to: 'games#play', via: 'get'
+  match '/users/:user_id/games/result', to: 'games#result', via: 'post'
 
   resources :celebrities do
     resources :tweets
