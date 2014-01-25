@@ -1,3 +1,5 @@
+require 'debugger'
+
 class AnswersController < ApplicationController
   # GET /answers
   # GET /answers.json
@@ -43,7 +45,13 @@ class AnswersController < ApplicationController
   # POST /answers.json
   def create
     @user = User.find(params[:user_id])
-    @answer = @user.answers.build(params[:answer])
+    @tweet = Tweet.find(params[:answer][:tweet_id])
+    if params[:answer][:guess] == @tweet.answer 
+      params[:answer][:correct] = true 
+    else 
+      params[:answer][:correct] = false 
+    end 
+    @answer = @user.answers.build(params[:answer])  
     respond_to do |format|
       if @answer.save
         format.html { redirect_to user_answer_path(@user, @answer), notice: 'Answer was successfully created.' }
@@ -60,6 +68,7 @@ class AnswersController < ApplicationController
   def update
     @answer = Answer.find(params[:id])
     @user = User.find(params[:user_id])
+
     respond_to do |format|
       if @answer.update_attributes(params[:answer])
         format.html { redirect_to user_answer_path(@user, @answer), notice: 'Answer was successfully updated.' }
