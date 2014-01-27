@@ -55,6 +55,7 @@ class PopulateTweet
 
   def rm_word_tweet(tweet)
     tweet.gsub(/tweet\S*/i, "")
+    # "This has the word tweet in it." => "This has the word  in it."
   end 
 
   def misspelling?(tweet)

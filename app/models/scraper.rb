@@ -16,7 +16,7 @@ class Scraper
 
   def get_handles
     array = html.search(".uname").collect{|h|h.text}
-    #modified_array = array[0..-2]
+    # modified_array = array[0..-2]
     modified_array = array[0..1]
   end
 
