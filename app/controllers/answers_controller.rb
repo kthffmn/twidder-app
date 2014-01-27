@@ -47,7 +47,8 @@ class AnswersController < ApplicationController
     @user = User.find(params[:user_id])
     @tweet = Tweet.find(params[:answer][:tweet_id])
     @answer = @user.answers.build(params[:answer])
-    my_answer = apply_regex(@answer.guess)
+    my_answer = @answer.apply_regex(@answer.guess)
+    
     if my_answer == @tweet.answer 
       @answer.correct = true 
     else 
