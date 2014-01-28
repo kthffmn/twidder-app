@@ -1,4 +1,4 @@
-# require 'debugger'
+require 'debugger'
 
 class AnswersController < ApplicationController
   # GET /answers
@@ -26,7 +26,8 @@ class AnswersController < ApplicationController
   # GET /answers/new
   # GET /answers/new.json
   def new
-    @my_tweet = Tweet.all.sample
+    # @my_tweet = Tweet.all.sample
+    @my_tweet = Tweet.first
     @answer = Answer.new
     @user = User.find(params[:user_id])
     respond_to do |format|
@@ -51,7 +52,8 @@ class AnswersController < ApplicationController
     
     if my_answer == @tweet.answer 
       @answer.correct = true
-      @user.score += 1 
+      # @user.score = @user.score + 1
+      debugger 
     else 
       @answer.correct = false 
     end 
