@@ -4,7 +4,7 @@ class Answer < ActiveRecord::Base
   belongs_to :tweet
 
 	validates :guess, :presence => true, :length => { :maximum => 200, :message => "must be between 1 and 200 characters"}
-
+    
   def rm_hashtags(text)
     text.gsub(/#\S*/, "")
     # This guess #has a hashtag. => "This guess  a hashtag."
