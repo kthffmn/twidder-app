@@ -51,7 +51,7 @@ class AnswersController < ApplicationController
     
     if my_answer == @tweet.answer 
       @answer.correct = true
-      @user.score += 1
+      @user.score += 1 
     else 
       @answer.correct = false 
     end 
