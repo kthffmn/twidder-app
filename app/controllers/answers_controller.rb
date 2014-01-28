@@ -1,5 +1,3 @@
-require 'debugger'
-
 class AnswersController < ApplicationController
   # GET /answers
   # GET /answers.json
@@ -26,10 +24,10 @@ class AnswersController < ApplicationController
   # GET /answers/new
   # GET /answers/new.json
   def new
-    # @my_tweet = Tweet.all.sample
-    @my_tweet = Tweet.first
+    @tweet = Tweet.all.sample
     @answer = Answer.new
     @user = User.find(params[:user_id])
+    @answer = @user.answers.new
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @answer }
@@ -47,11 +45,10 @@ class AnswersController < ApplicationController
   def create
     @user = User.find(params[:user_id])
     @tweet = Tweet.find(params[:answer][:tweet_id])
-    @answer = @user.answers.build(params[:answer])
+    @answer = @user.answers.build(params[:answer]) 
     my_answer = @answer.apply_regex(@answer.guess)
-    
     if my_answer == @tweet.answer 
-      @answer.correct = true
+      @answer.correct = true 
       @user.score += 1
       @user.save
     else 
