@@ -29,7 +29,6 @@ class AnswersController < ApplicationController
     @tweet = Tweet.all.sample
     @answer = Answer.new
     @user = User.find(params[:user_id])
-    @answer = @user.answers.new
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @answer }
