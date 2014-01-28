@@ -51,11 +51,7 @@ class AnswersController < ApplicationController
     my_answer = @answer.apply_regex(@answer.guess)
     
     if my_answer == @tweet.answer 
-<<<<<<< HEAD
       @answer.correct = true
-=======
-      @answer.correct = true 
->>>>>>> 993d96c020398b02fed179ba38c61d6e9f1bd23e
       @user.score += 1
       @user.save
     else 
