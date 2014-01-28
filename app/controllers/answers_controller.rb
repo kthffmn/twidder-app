@@ -26,8 +26,8 @@ class AnswersController < ApplicationController
   # GET /answers/new
   # GET /answers/new.json
   def new
-    # @my_tweet = Tweet.all.sample
-    @my_tweet = Tweet.first
+    @my_tweet = Tweet.all.sample
+    # @my_tweet = Tweet.first
     @answer = Answer.new
     @user = User.find(params[:user_id])
     respond_to do |format|
