@@ -27,7 +27,7 @@ class AnswersController < ApplicationController
   # GET /answers/new.json
   def new
     # @my_tweet = Tweet.all.sample
-    @my_tweet = Tweet.first
+    @tweet = Tweet.first
     @user = User.find(params[:user_id])
     @answer = @user.answers.new
     respond_to do |format|
@@ -46,10 +46,10 @@ class AnswersController < ApplicationController
   # POST /answers.json
   def create
     @user = User.find(params[:user_id])
-    @my_tweet = Tweet.find(params[:answer][:tweet_id])
+    @tweet = Tweet.find(params[:answer][:tweet_id])
     @answer = @user.answers.build(params[:answer]) 
     my_answer = @answer.apply_regex(@answer.guess)
-    if my_answer == @my_tweet.answer 
+    if my_answer == @tweet.answer 
       @answer.correct = true 
       @user.score += 1
       @user.save
