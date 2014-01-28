@@ -7,4 +7,3 @@ class Tweet < ActiveRecord::Base
 	# 	PopulateTweet.new(celebrity).add_to_database
 	# end 
 end
-
