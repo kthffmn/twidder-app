@@ -50,7 +50,8 @@ class AnswersController < ApplicationController
     my_answer = @answer.apply_regex(@answer.guess)
     
     if my_answer == @tweet.answer 
-      @answer.correct = true 
+      @answer.correct = true
+      @user.score += 1
     else 
       @answer.correct = false 
     end 
