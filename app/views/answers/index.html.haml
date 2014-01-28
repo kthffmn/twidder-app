@@ -20,7 +20,7 @@
       %td= answer.guess
       %td= answer.correct
       %td= link_to 'Show', user_answer_path(@user, answer)
-      %td= link_to 'Edit', edit_user_answer_path(@user, answer)
+      / %td= link_to 'Edit', edit_user_answer_path(@user, answer)
       %td= link_to 'Destroy', user_answer_path(@user, answer), :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
