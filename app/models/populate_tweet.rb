@@ -76,7 +76,7 @@ class PopulateTweet
     new_array = array.collect do |word|
       misspelling?(word)
     end
-    new_array.join(" ")
+    new_array.join(" ").downcase
   end
 
   def select_misspelled_objects
