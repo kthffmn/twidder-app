@@ -58,6 +58,11 @@ class PopulateTweet
     # "This has the word tweet in it." => "This has the word  in it."
   end 
 
+  def rm_u_word(tweet)
+    tweet.gsub(/.* u .*/, "")
+    # "This guess has an u instead of a you." => ""
+  end
+
   def misspelling?(tweet)
     Gingerice::Parser.new.parse(tweet)["result"]
   end
@@ -66,12 +71,22 @@ class PopulateTweet
     Swearjar.default.profane?(tweet)
   end 
 
+  def apply_gingerice_to_individual_words(string)
+    array = string.split(" ")
+    new_array = array.collect do |word|
+      misspelling?(word)
+    end
+    new_array.join(" ")
+  end
+
   def select_misspelled_objects
     hash = {}
     get_all_objects.each do |object|
-      text = rm_weird_characters(rm_hashtags(rm_word_tweet(rm_url_tweets(rm_at_tweets(rm_rt_tweets(object.text))))))
-      answer = misspelling?(text)
-      if text.downcase != answer.downcase && curse_word?(object.text) == false 
+      text = rm_weird_characters(rm_u_word(rm_hashtags(rm_word_tweet(rm_url_tweets(rm_at_tweets(rm_rt_tweets(object.text)))))))
+      answer = apply_gingerice_to_individual_words(text)
+      text_post_regex = text.downcase.gsub(/[^a-z]/i, "")
+      answer_post_regex = answer.downcase.gsub(/[^a-z]/i, "")
+      if text_post_regex != answer_post_regex && curse_word?(object.text) == false 
         hash[object] = answer
       end
     end
