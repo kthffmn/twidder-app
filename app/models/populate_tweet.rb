@@ -2,6 +2,7 @@ class PopulateTweet
   attr_reader :client, :celebrity
 
   def initialize(celebrity)
+    AfterTheDeadline(nil, nil)
     @celebrity = celebrity
     @client = Twitter::REST::Client.new do |config|
       config.consumer_key        = 'kA7yw9y4aqFEM15GIXLbw'
@@ -71,10 +72,17 @@ class PopulateTweet
     Swearjar.default.profane?(tweet)
   end 
 
-  def apply_gingerice_to_individual_words(string)
+  def apply_after_the_deadline(string)
     array = string.split(" ")
-    new_array = array.collect do |word|
-      misspelling?(word)
+    new_array = []
+    array.each do |word|
+      arr = AfterTheDeadline.check word
+      if arr.length > 0
+        new_array << arr[0].suggestions[0]
+      else
+        new_array << word
+      end
+      sleep(0.89)
     end
     new_array.join(" ").downcase
   end
@@ -83,7 +91,7 @@ class PopulateTweet
     hash = {}
     get_all_objects.each do |object|
       text = rm_weird_characters(rm_u_word(rm_hashtags(rm_word_tweet(rm_url_tweets(rm_at_tweets(rm_rt_tweets(object.text)))))))
-      answer = apply_gingerice_to_individual_words(text)
+      answer = apply_after_the_deadline(text)
       text_post_regex = text.downcase.gsub(/[^a-z]/i, "")
       answer_post_regex = answer.downcase.gsub(/[^a-z]/i, "")
       if text_post_regex != answer_post_regex && curse_word?(object.text) == false 
