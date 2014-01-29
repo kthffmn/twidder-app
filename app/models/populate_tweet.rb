@@ -73,18 +73,16 @@ class PopulateTweet
   end 
 
   def apply_after_the_deadline(string)
-    array = string.split(" ")
-    new_array = []
-    array.each do |word|
-      arr = AfterTheDeadline.check word
-      if arr.length > 0
-        new_array << arr[0].suggestions[0]
-      else
-        new_array << word
+    duplicate = string
+    arr = AfterTheDeadline.check string
+    if arr.length > 0
+      arr.each do |object|
+        duplicate.gsub!("#{object.string}", "#{object.suggestions[0]}")
       end
-      sleep(0.89)
+      duplicate
+    else
+      string
     end
-    new_array.join(" ").downcase
   end
 
   def select_misspelled_objects
