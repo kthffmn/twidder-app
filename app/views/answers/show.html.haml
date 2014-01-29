@@ -1,5 +1,11 @@
 / %p#notice= notice
 
+.tweet{:align => "center"}
+  %blockquote.twitter-tweet{:lang => "en"}
+    %p= @tweet.tweet
+    %a{:href => @tweet.url}link
+  %script{:async => "", :charset => "utf-8", :src => "//platform.twitter.com/widgets.js"}
+
 %p
   %b User:
   = @answer.user_id
