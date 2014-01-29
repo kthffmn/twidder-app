@@ -73,13 +73,13 @@ class PopulateTweet
   end 
 
   def apply_after_the_deadline(string)
-    duplicate = string
     arr = AfterTheDeadline.check string
     if arr.length > 0
+      new_string = ""
       arr.each do |object|
-        duplicate.gsub!("#{object.string}", "#{object.suggestions[0]}")
+        new_string = string.gsub("#{object.string}", "#{object.suggestions[0]}")
       end
-      duplicate
+      new_string
     else
       string
     end
@@ -95,6 +95,7 @@ class PopulateTweet
       if text_post_regex != answer_post_regex && curse_word?(object.text) == false 
         hash[object] = answer
       end
+      sleep(1)
     end
     hash
   end
