@@ -1,11 +1,16 @@
 %h1 Listing answers
 
-%p 
-  Score:
-  = @user.score
 %table
   %tr
-    %th User
+    %th Name: 
+    %th Score:
+    %tr
+      %td= @user.name
+      %td= @user.score
+
+
+%table
+  %tr
     %th Tweet
     %th Guess
     %th Correct
@@ -15,7 +20,6 @@
 
   - @answers.each do |answer|
     %tr
-      %td= answer.user_id
       %td= answer.tweet_id
       %td= answer.guess
       %td= answer.correct
