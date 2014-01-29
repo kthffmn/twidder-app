@@ -16,7 +16,6 @@ gem 'swearjar'
 gem 'nokogiri'
 gem 'bootstrap-sass', '2.1'
 
-gem 'bootstrap-sass'
 group :development do
   gem 'rails_layout'
 end
