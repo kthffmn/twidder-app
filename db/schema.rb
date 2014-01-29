@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140128150202) do
+ActiveRecord::Schema.define(:version => 20140129161123) do
 
   create_table "answers", :force => true do |t|
     t.integer  "user_id"
@@ -41,10 +41,11 @@ ActiveRecord::Schema.define(:version => 20140128150202) do
   create_table "users", :force => true do |t|
     t.string   "name"
     t.string   "password"
-    t.integer  "score",      :default => 0
+    t.integer  "score",           :default => 0
     t.string   "email"
-    t.datetime "created_at",                :null => false
-    t.datetime "updated_at",                :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+    t.string   "password_digest"
   end
 
 end
