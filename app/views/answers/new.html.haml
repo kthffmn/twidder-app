@@ -1,0 +1,12 @@
+%h1 Twidder
+
+.tweet{:align => "center"}
+  %blockquote.twitter-tweet{:lang => "en"}
+    %p= @tweet.tweet
+    %a{:href => @tweet.url}link
+  %script{:async => "", :charset => "utf-8", :src => "//platform.twitter.com/widgets.js"}
+
+= render 'form'
+
+= link_to 'Back', user_answers_path(@user, @answer)
+
