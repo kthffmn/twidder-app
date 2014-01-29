@@ -32,7 +32,12 @@ GEM
     arel (3.0.3)
     atomic (1.1.14)
     awesome_print (1.2.0)
+<<<<<<< HEAD
     bootstrap-sass (2.1.0.0)
+=======
+    bootstrap-sass (3.0.3.0)
+      sass (~> 3.2)
+>>>>>>> fcf6c08b6d947c852a56398fc53ba39036691502
     buftok (0.2.0)
     builder (3.0.4)
     coffee-rails (3.2.2)
@@ -157,7 +162,11 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+<<<<<<< HEAD
   bootstrap-sass (= 2.1)
+=======
+  bootstrap-sass
+>>>>>>> fcf6c08b6d947c852a56398fc53ba39036691502
   coffee-rails (~> 3.2.1)
   debugger
   gingerice

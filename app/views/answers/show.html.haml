@@ -1,18 +1,16 @@
-%p#notice= notice
+/ %p#notice= notice
 
 %p
   %b User:
   = @answer.user_id
 %p
   %b Tweet:
-  = @answer.tweet_id
+  = @tweet.tweet
+%p
+  %b Result:
+  = @answer.correct == false ? "The correct answer is: '#{@tweet.answer}'": "You're smart!"
 %p
   %b Guess:
   = @answer.guess
-%p
-  %b Correct:
-  = @answer.correct
-
-/ = link_to 'Edit', edit_user_answer_path(@user, @answer)
 
 = link_to 'My Answers', user_answers_path(@user)

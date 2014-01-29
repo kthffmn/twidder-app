@@ -16,6 +16,10 @@ gem 'swearjar'
 gem 'nokogiri'
 gem 'bootstrap-sass', '2.1'
 
+gem 'bootstrap-sass'
+group :development do
+  gem 'rails_layout'
+end
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

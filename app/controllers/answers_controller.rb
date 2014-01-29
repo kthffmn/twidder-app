@@ -15,6 +15,7 @@ class AnswersController < ApplicationController
   def show
     @answer = Answer.find(params[:id])
     @user = User.find(params[:user_id])
+    @tweet = Tweet.find(@answer.tweet_id)
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @answer }
@@ -46,7 +47,7 @@ class AnswersController < ApplicationController
     @tweet = Tweet.find(params[:answer][:tweet_id])
     @answer = @user.answers.build(params[:answer]) 
     my_answer = @answer.apply_regex(@answer.guess)
-    if my_answer == @tweet.answer 
+    if my_answer.downcase.gsub(/[^a-z']/i, "") == @tweet.answer.downcase.gsub(/[^a-z']/i, "")
       @answer.correct = true 
       @user.score += 1
       @user.save
