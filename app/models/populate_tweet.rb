@@ -22,6 +22,7 @@ class PopulateTweet
     collect_with_max_id do |max_id|
       options = {:count => 200, :include_rts => false}
       options[:max_id] = max_id unless max_id.nil?
+      puts celebrity.handle, max_id
       @client.user_timeline(celebrity.handle, options)
     end
   end
@@ -87,7 +88,10 @@ class PopulateTweet
 
   def select_misspelled_objects
     hash = {}
+    index = 0
     get_all_objects.each do |object|
+      puts index
+      index += 1
       text = rm_weird_characters(rm_u_word(rm_hashtags(rm_word_tweet(rm_url_tweets(rm_at_tweets(rm_rt_tweets(object.text)))))))
       answer = apply_after_the_deadline(text)
       text_post_regex = text.downcase.gsub(/[^a-z]/i, "")
