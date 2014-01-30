@@ -73,19 +73,19 @@ class PopulateTweet
     Swearjar.default.profane?(tweet)
   end 
 
-def apply_aspell(string)
-  array = string.split(" ")
-  new_array = []
-  array.each do |word|
-    arr = @speller.suggestions(word)
-    if arr.length > 0
-      new_array << arr
-    else
-      new_array << [word]
+  def apply_aspell(string)
+    array = string.split(" ")
+    new_array = []
+    array.each do |word|
+      arr = @speller.suggestions(word)
+      if arr.length > 0
+        new_array << arr
+      else
+        new_array << [word]
+      end
     end
+    new_array
   end
-  new_array
-end
 
   def select_misspelled_objects
     hash = {}
