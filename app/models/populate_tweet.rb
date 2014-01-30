@@ -1,8 +1,8 @@
 class PopulateTweet 
-  attr_reader :client, :celebrity
+  attr_reader :client, :celebrity, :speller
 
   def initialize(celebrity)
-    AfterTheDeadline(nil, nil)
+    @speller = FFI::Aspell::Speller.new('en_US')
     @celebrity = celebrity
     @client = Twitter::REST::Client.new do |config|
       config.consumer_key        = 'kA7yw9y4aqFEM15GIXLbw'
@@ -73,18 +73,19 @@ class PopulateTweet
     Swearjar.default.profane?(tweet)
   end 
 
-  def apply_after_the_deadline(string)
-    arr = AfterTheDeadline.check string
+def apply_aspell(string)
+  array = string.split(" ")
+  new_array = []
+  array.each do |word|
+    arr = @speller.suggestions(word)
     if arr.length > 0
-      new_string = ""
-      arr.each do |object|
-        new_string = string.gsub("#{object.string}", "#{object.suggestions[0]}")
-      end
-      new_string
+      new_array << arr
     else
-      string
+      new_array << [word]
     end
   end
+  new_array
+end
 
   def select_misspelled_objects
     hash = {}
