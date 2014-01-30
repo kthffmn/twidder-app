@@ -87,23 +87,35 @@ class PopulateTweet
     new_array
   end
 
+  def store?(string, new_array)
+    store = false
+    regex = string.gsub(/[^\w ']/, "")
+    array = regex.split(" ")
+    index = 0
+    array.each do |word|
+      if new_array[index].include?(word) == false
+        store = true
+        break
+      end
+      index += 1
+    end
+    store
+  end
+
   def select_misspelled_objects
     hash = {}
-    index = 0
+    index = 0 
     get_all_objects.each do |object|
       puts index
       index += 1
       text = rm_weird_characters(rm_u_word(rm_hashtags(rm_word_tweet(rm_url_tweets(rm_at_tweets(rm_rt_tweets(object.text)))))))
-      answer = apply_after_the_deadline(text)
-      text_post_regex = text.downcase.gsub(/[^a-z]/i, "")
-      answer_post_regex = answer.downcase.gsub(/[^a-z]/i, "")
-      if text_post_regex != answer_post_regex && curse_word?(object.text) == false 
+      answer = apply_aspell(text)
+      if store?(text, answer) && !curse_word?(object.text)
         hash[object] = answer
       end
-      sleep(1)
-    end
+    end 
     hash
-  end
+  end 
 
   def add_to_database
     select_misspelled_objects.each do |object, answer|
