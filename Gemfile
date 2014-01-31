@@ -10,11 +10,10 @@ gem 'sqlite3'
 gem 'haml'
 gem 'haml-rails'
 
-gem 'gingerice'
 gem 'twitter'
 gem 'swearjar'
 gem 'nokogiri'
-gem 'after_the_deadline'
+gem 'ffi-aspell'
 
 # Gems used only for assets and not required
 # in production environments by default.

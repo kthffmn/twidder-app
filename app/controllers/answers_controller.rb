@@ -44,15 +44,20 @@ class AnswersController < ApplicationController
   def create
     @user = User.find(params[:user_id])
     @tweet = Tweet.find(params[:answer][:tweet_id])
-    @answer = @user.answers.build(params[:answer]) 
-    my_answer = @answer.apply_regex(@answer.guess)
-    if my_answer == @tweet.answer 
-      @answer.correct = true 
-      @user.score += 1
-      @user.save
-    else 
-      @answer.correct = false 
-    end 
+    @answer = @user.answers.build(params[:answer])
+    regex_1 = @answer.apply_regex(@answer.guess)
+    regex_2 = regex_1.gsub(/[^\w ']/, "")
+    my_answer = regex_2.split(" ")
+    index = 0 
+    @answer.correct = true
+    debugger
+    my_answer.each do |word|
+      if !@tweet.answer[index].include?(word)
+        @answer.correct = false
+        break
+      end 
+      index += 1
+    end
     respond_to do |format|
       if @answer.save
         format.html { redirect_to user_answer_path(@user, @answer), notice: 'Answer was successfully created.' }

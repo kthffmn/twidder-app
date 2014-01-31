@@ -29,11 +29,8 @@ GEM
       i18n (~> 0.6, >= 0.6.4)
       multi_json (~> 1.0)
     addressable (2.3.5)
-    after_the_deadline (0.1.3)
-      crack
     arel (3.0.3)
     atomic (1.1.14)
-    awesome_print (1.2.0)
     buftok (0.2.0)
     builder (3.0.4)
     coffee-rails (3.2.2)
@@ -44,8 +41,6 @@ GEM
       execjs
     coffee-script-source (1.6.3)
     columnize (0.3.6)
-    crack (0.4.1)
-      safe_yaml (~> 0.9.0)
     debugger (1.6.5)
       columnize (>= 0.3.1)
       debugger-linecache (~> 1.2.0)
@@ -58,10 +53,10 @@ GEM
     execjs (2.0.2)
     faraday (0.9.0)
       multipart-post (>= 1.2, < 3)
+    ffi (1.9.3)
+    ffi-aspell (0.0.3)
+      ffi (>= 1.0.11)
     fuzzyhash (0.0.11)
-    gingerice (1.2.2)
-      addressable
-      awesome_print
     haml (4.0.5)
       tilt
     haml-rails (0.4)
@@ -117,7 +112,6 @@ GEM
     rake (10.1.1)
     rdoc (3.12.2)
       json (~> 1.4)
-    safe_yaml (0.9.7)
     sass (3.2.14)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
@@ -160,10 +154,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  after_the_deadline
   coffee-rails (~> 3.2.1)
   debugger
-  gingerice
+  ffi-aspell
   haml
   haml-rails
   jquery-rails
