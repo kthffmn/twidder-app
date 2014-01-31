@@ -26,6 +26,7 @@ class AnswersController < ApplicationController
   # GET /answers/new.json
   def new
     @tweet = Tweet.all.sample
+    # @tweet = Tweet.find(432)
     @answer = Answer.new
     @user = User.find(params[:user_id])
     respond_to do |format|
@@ -47,12 +48,16 @@ class AnswersController < ApplicationController
     @tweet = Tweet.find(params[:answer][:tweet_id])
     @answer = @user.answers.build(params[:answer])
     regex_1 = @answer.apply_regex(@answer.guess)
-    regex_2 = regex_1.gsub(/[^\w ']/, "")
-    my_answer = regex_2.split(" ")
+    regex_2 = regex_1.gsub(/[^\w ']/, "") # removes all but numbers, letters, and ' <= those things
+    regex_3 = regex_2.gsub(/(\d)/,"") # removes numbers
+    my_answer = regex_3.split(" ")
     index = 0 
+    debugger
     @answer.correct = true
     my_answer.each do |word|
+      debugger
       if !@tweet.answer[index].include?(word)
+        debugger
         @answer.correct = false
         break
       end 

@@ -102,13 +102,19 @@ class PopulateTweet
     store
   end
 
+  def remove_numbers(string)
+    string.gsub(/(\d)/,"")
+  end
+
   def select_misspelled_objects
     hash = {}
     index = 0 
     get_all_objects.each do |object|
       puts index
       index += 1
-      text = rm_weird_characters(rm_u_word(rm_hashtags(rm_word_tweet(rm_url_tweets(rm_at_tweets(rm_rt_tweets(object.text)))))))
+      number_text = rm_weird_characters(rm_u_word(rm_hashtags(rm_word_tweet(rm_url_tweets(rm_at_tweets(rm_rt_tweets(object.text)))))))
+      text = remove_numbers(number_text)
+      debugger
       answer = apply_aspell(text)
       if store?(text, answer) && !curse_word?(object.text)
         hash[object] = answer

@@ -9,6 +9,10 @@
 %p
   %b Answer:
   = @tweet.answer
+%p
+  %b Id:
+  = @tweet.id
+
 
 = link_to 'Edit', edit_celebrity_tweet_path(@celebrity, @tweet)
 \|
