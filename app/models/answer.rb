@@ -22,5 +22,4 @@ class Answer < ActiveRecord::Base
   def apply_regex(string)
     rm_weird_characters(rm_hashtags(rm_word_tweet(string)))
   end
-
 end
