@@ -51,7 +51,6 @@ class AnswersController < ApplicationController
     my_answer = regex_2.split(" ")
     index = 0 
     @answer.correct = true
-    debugger
     my_answer.each do |word|
       if !@tweet.answer[index].include?(word)
         @answer.correct = false
