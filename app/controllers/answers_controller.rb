@@ -48,24 +48,21 @@ class AnswersController < ApplicationController
     @tweet = Tweet.find(params[:answer][:tweet_id])
     @answer = @user.answers.build(params[:answer])
     regex_1 = @answer.apply_regex(@answer.guess)
-<<<<<<< HEAD
     regex_2 = regex_1.gsub(/[^\w ']/, "") # removes all but numbers, letters, and ' <= those things
     regex_3 = regex_2.gsub(/(\d)/,"") # removes numbers
     my_answer = regex_3.split(" ")
     index = 0 
     @answer.correct = true
     my_answer.each do |word|
-      debugger
       if !@tweet.answer[index].include?(word)
-        debugger
         @answer.correct = false
         break
       end 
       index += 1
     end
     if @answer.correct == true
-      @user.score += 1  
-      @user.save # shows up as false but should save the variable 
+      old_score = @user.score
+      @user.update_attribute(:score, old_score + 1)
     end
     respond_to do |format|
       if @answer.save
