@@ -15,6 +15,7 @@ class User < ActiveRecord::Base
   VALID_PASSWORD_REGEX = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])/
   validates :password, :presence => true, :format => {:with => VALID_PASSWORD_REGEX, :message => "must include at least one upper case letter, one lower case letter, and one numeric digit"},:length =>{:within => 8..16,:message => "must be between 8 to 16 characters"}
   validates :password_confirmation, :presence => true
+  after_validation { self.errors.messages.delete(:password_digest)}
 
   private
   
