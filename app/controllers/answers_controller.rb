@@ -15,6 +15,7 @@ class AnswersController < ApplicationController
   def show
     @answer = Answer.find(params[:id])
     @user = User.find(params[:user_id])
+    @tweet = Tweet.find(@answer.tweet_id)
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @answer }

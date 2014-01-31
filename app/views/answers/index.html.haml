@@ -1,11 +1,16 @@
 %h1 Listing answers
 
-%p 
-  Score:
-  = @user.score
 %table
   %tr
-    %th User
+    %th Name: 
+    %th Score:
+    %tr
+      %td= @user.name
+      %td= @user.score
+
+
+%table
+  %tr
     %th Tweet
     %th Guess
     %th Correct
@@ -15,13 +20,11 @@
 
   - @answers.each do |answer|
     %tr
-      %td= answer.user_id
-      %td= answer.tweet_id
+      %td= Tweet.find(answer.tweet_id).tweet
       %td= answer.guess
       %td= answer.correct
       %td= link_to 'Show', user_answer_path(@user, answer)
       / %td= link_to 'Edit', edit_user_answer_path(@user, answer)
-      %td= link_to 'Destroy', user_answer_path(@user, answer), :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 

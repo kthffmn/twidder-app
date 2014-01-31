@@ -1,22 +1,29 @@
 Twidder2::Application.routes.draw do
-  get "users/new"
 
   # root  'static_pages#home'
-  match '/signup', to: 'users#new',         via: 'get'
-  match '/home',   to: 'static_pages#home', via: 'get'
-
+  root to: 'static_pages#home'
+  
+  match '/',        to: 'static_pages#home'
+  match '/home',    to: 'static_pages#home'
+  match '/help',    to: 'static_pages#help'
+  match '/about',   to: 'static_pages#about'
+  match '/contact', to: 'static_pages#contact'
 
   resources :users do
     resources :answers 
   end
 
-  # root  'games'
-  match '/users/:user_id/games/play', to: 'games#play', via: 'get'
-  match '/users/:user_id/games/result', to: 'games#result', via: 'post'
-
   resources :celebrities do
     resources :tweets
   end
+
+  #root 'sign_in'
+  resources :users
+  resources :sessions, only: [:new, :create, :destroy]
+
+  match '/signup',  to: 'users#new'
+  match '/signin',  to: 'sessions#new'
+  match '/signout', to: 'sessions#destroy', via: :delete
 
 
   # The priority is based upon order of creation:
