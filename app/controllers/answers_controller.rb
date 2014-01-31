@@ -25,7 +25,7 @@ class AnswersController < ApplicationController
   # GET /answers/new
   # GET /answers/new.json
   def new
-    @tweet = Tweet.all.sample
+    @tweet = Tweet.first
     @answer = Answer.new
     @user = User.find(params[:user_id])
     respond_to do |format|
@@ -49,7 +49,7 @@ class AnswersController < ApplicationController
     regex_1 = @answer.apply_regex(@answer.guess)
     regex_2 = regex_1.gsub(/[^\w ']/, "")
     my_answer = regex_2.split(" ")
-    index = 0 
+    index = 0
     @answer.correct = true
     my_answer.each do |word|
       if !@tweet.answer[index].include?(word)
@@ -57,6 +57,10 @@ class AnswersController < ApplicationController
         break
       end 
       index += 1
+    end
+    if @answer.correct == true
+      @user.score += 1  
+      @user.save # shows up as false but should save the variable 
     end
     respond_to do |format|
       if @answer.save
