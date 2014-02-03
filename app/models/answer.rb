@@ -3,11 +3,7 @@ class Answer < ActiveRecord::Base
   belongs_to :user
   belongs_to :tweet
 	validates :guess, :presence => true, :length => { :maximum => 200, :message => "must be between 1 and 200 characters"}
-<<<<<<< HEAD
-   
-=======
-    
->>>>>>> 8fc1d131a2c5134432f8940bf0bd6133d18e0d1f
+  
   def rm_word_tweet(text)
     text.gsub(/tweet\S*/i, "")
     # "This is a tweet." => "This is a "
