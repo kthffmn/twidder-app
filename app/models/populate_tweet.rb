@@ -69,7 +69,7 @@ class PopulateTweet
     # "This guess has an u instead of a you." => ""
   end
 
-  def rm_elipses 
+  def rm_elipses(tweet)
     tweet.gsub(/[^\w\s]/, " ")
   end 
 
@@ -131,13 +131,13 @@ class PopulateTweet
   end 
 
   def add_to_database
-    select_misspelled_objects.each do |object, answer|
+    select_misspelled_objects.each do |object, answer_and_text|
       Tweet.create(
         :celebrity_id => celebrity.id, 
         :tweet => object.text,
-        :answer => answer[0],
+        :answer => answer_and_text[0],
         :url => object.uri.to_s,
-        :post_regex => answer[1]
+        :post_regex => answer_and_text[1]
       )
     end
   end

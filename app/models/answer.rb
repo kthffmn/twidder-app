@@ -29,8 +29,8 @@ class Answer < ActiveRecord::Base
     # "This guess has a ♥ that's a heart."=> "This guess has a  that's a heart."
   end
 
-  def rm_elipses 
-    tweet.gsub(/[^\w\s]/, " ")
+  def rm_elipses(text)
+    text.gsub(/[^\w\s]/, " ")
   end 
 
   def apply_regex(string)
