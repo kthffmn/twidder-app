@@ -62,11 +62,12 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        flash[:success] = "Profile updated"
+        sign_in @user
+        format.html { redirect_to @user }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        render 'edit'
       end
     end
   end
