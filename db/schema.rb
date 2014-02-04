@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140129220734) do
+ActiveRecord::Schema.define(:version => 20140204004554) do
 
   create_table "answers", :force => true do |t|
     t.integer  "user_id"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(:version => 20140129220734) do
     t.string   "url"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+    t.string   "post_regex"
   end
 
   create_table "users", :force => true do |t|

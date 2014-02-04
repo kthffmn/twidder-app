@@ -1,5 +1,6 @@
 class PopulateTweet 
   attr_reader :client, :celebrity, :speller
+  attr_accessor :text
 
   def initialize(celebrity)
     @speller = FFI::Aspell::Speller.new('en_US')
@@ -68,6 +69,7 @@ class PopulateTweet
     # "This guess has an u instead of a you." => ""
   end
 
+<<<<<<< HEAD
   def rm_elipses 
     tweet.gsub(/[^\w\s]/, " ")
   end 
@@ -76,28 +78,30 @@ class PopulateTweet
     Gingerice::Parser.new.parse(tweet)["result"]
   end
 
+=======
+>>>>>>> 18ee77f0bf815d4cb24f3806fc72a5f8feaa584c
   def curse_word?(tweet)
     Swearjar.default.profane?(tweet)
   end 
 
-  def apply_aspell(string)
-    array = string.split(" ")
+  def apply_aspell(string)              # I love u.
+    array = string.split(" ")           # ["I", "love", "u"]
     new_array = []
     array.each do |word|
-      arr = @speller.suggestions(word)
-      if arr.length > 0
+      arr = @speller.suggestions(word)  # arr = [] arr = ["you", "your", "urn"]
+      if arr.length > 0                 # arr.length = 0
         new_array << arr
       else
-        new_array << [word]
+        new_array << [word]             # word => "I"  new_array = [["I"], ["love"], ["you", "your", "urn"], ["too"]]
       end
     end
-    new_array
+    new_array     
   end
 
   def store?(string, new_array)
     store = false
-    regex = string.gsub(/[^\w ']/, "")
-    array = regex.split(" ")
+    regex = string.gsub(/[^\w ']/, "")  
+    array = regex.split(" ")            # ["I", "love", "u", "too"]
     index = 0
     array.each do |word|
       if new_array[index].include?(word) == false
@@ -109,16 +113,25 @@ class PopulateTweet
     store
   end
 
+  def remove_numbers(string)
+    string.gsub(/(\d)/,"")
+  end
+
   def select_misspelled_objects
     hash = {}
     index = 0 
     get_all_objects.each do |object|
       puts index
       index += 1
+<<<<<<< HEAD
       text = rm_weird_characters(rm_elipses(rm_u_word(rm_hashtags(rm_word_tweet(rm_url_tweets(rm_at_tweets(rm_rt_tweets(object.text))))))))
+=======
+      number_text = rm_weird_characters(rm_u_word(rm_hashtags(rm_word_tweet(rm_url_tweets(rm_at_tweets(rm_rt_tweets(object.text)))))))
+      text = remove_numbers(number_text)
+>>>>>>> 18ee77f0bf815d4cb24f3806fc72a5f8feaa584c
       answer = apply_aspell(text)
       if store?(text, answer) && !curse_word?(object.text)
-        hash[object] = answer
+        hash[object] = [answer, text]
       end
     end 
     hash
@@ -129,8 +142,9 @@ class PopulateTweet
       Tweet.create(
         :celebrity_id => celebrity.id, 
         :tweet => object.text,
-        :answer => answer,
-        :url => object.uri.to_s 
+        :answer => answer[0],
+        :url => object.uri.to_s,
+        :post_regex => answer[1]
       )
     end
   end
