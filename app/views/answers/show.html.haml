@@ -19,6 +19,6 @@
   %b Guess:
   = @answer.guess
 
-= link_to 'My Answers', user_answers_path(@user)
+= link_to 'Play Again', new_user_answer_path(@user)
 
-/ Gingerice::Parser.new.parse(tweet)["result"]
+= link_to 'My Answers', user_answers_path(@user)
