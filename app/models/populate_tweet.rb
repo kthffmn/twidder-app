@@ -120,12 +120,8 @@ class PopulateTweet
     get_all_objects.each do |object|
       puts index
       index += 1
-<<<<<<< HEAD
-      text = rm_weird_characters(rm_elipses(rm_u_word(rm_hashtags(rm_word_tweet(rm_url_tweets(rm_at_tweets(rm_rt_tweets(object.text))))))))
-=======
-      number_text = rm_weird_characters(rm_u_word(rm_hashtags(rm_word_tweet(rm_url_tweets(rm_at_tweets(rm_rt_tweets(object.text)))))))
+      number_text = rm_weird_characters(rm_elipses(rm_u_word(rm_hashtags(rm_word_tweet(rm_url_tweets(rm_at_tweets(rm_rt_tweets(object.text))))))))
       text = remove_numbers(number_text)
->>>>>>> 18ee77f0bf815d4cb24f3806fc72a5f8feaa584c
       answer = apply_aspell(text)
       if store?(text, answer) && !curse_word?(object.text)
         hash[object] = [answer, text]
