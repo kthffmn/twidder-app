@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_filter :signed_in_user, only: [:edit, :update]
+  before_filter :correct_user,   only: [:edit, :update]
   # GET /users
   # GET /users.json
   def index
@@ -47,7 +48,7 @@ class UsersController < ApplicationController
       if @user.save
         sign_in @user
         flash[:success] = "Welcome to Twidder!"
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        format.html { redirect_to @user }
         format.json { render json: @user, status: :created, location: @user }
       else
         format.html { render action: "new" }
@@ -88,6 +89,12 @@ class UsersController < ApplicationController
   private
 
     def signed_in_user
-      redirect_to signin_url, notice: "Please sign in." unless signed_in?
+      store_location
+      redirect_to signin_url, notice: "Please sign in."
+    end
+
+    def correct_user
+      @user = User.find(params[:id])
+      redirect_to(root_url) unless currect_user?(@user)
     end
 end
