@@ -51,8 +51,8 @@ class AnswersController < ApplicationController
     regex_3 = regex_2.gsub(/(\d)/,"") # removes numbers
     my_answer = regex_3.split(" ") # => ["I", "love", "u"]
     index = 0 
-    @answer.correct = true
     if my_answer.length == @tweet.answer.length
+      @answer.correct = true
       my_answer.each do |word|
         if !@tweet.answer[index].include?(word) # [["I"], ["love"], ["you", "urn", "your"]]
           @answer.correct = false
