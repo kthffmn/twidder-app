@@ -4,7 +4,7 @@ class Tweet < ActiveRecord::Base
   has_many :answers
   serialize :answer, Array
 
-	Celebrity.all.each do |celebrity|
-		PopulateTweet.new(celebrity).add_to_database
-	end 
+	# Celebrity.all.each do |celebrity|
+	# 	PopulateTweet.new(celebrity).add_to_database
+	# end 
 end
