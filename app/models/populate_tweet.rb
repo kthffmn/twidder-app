@@ -69,7 +69,6 @@ class PopulateTweet
     # "This guess has an u instead of a you." => ""
   end
 
-<<<<<<< HEAD
   def rm_elipses 
     tweet.gsub(/[^\w\s]/, " ")
   end 
@@ -78,8 +77,6 @@ class PopulateTweet
     Gingerice::Parser.new.parse(tweet)["result"]
   end
 
-=======
->>>>>>> 18ee77f0bf815d4cb24f3806fc72a5f8feaa584c
   def curse_word?(tweet)
     Swearjar.default.profane?(tweet)
   end 
