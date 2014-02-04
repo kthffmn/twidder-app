@@ -10,8 +10,11 @@
   %b Tweet:
   = @tweet.tweet
 %p
-  %b Result:
+  %b Gingerice Result:
   = @answer.correct == false ? "Sorry! The correct answer is: '#{Gingerice::Parser.new.parse(@tweet.post_regex)["result"]}'": "You're smart!"
+  %p
+  %b Asspell Result:
+  = @answer.correct == false ? "Sorry! The correct answer is: '#{@tweet.answer}'": "You're smart!"
 %p
   %b Guess:
   = @answer.guess
