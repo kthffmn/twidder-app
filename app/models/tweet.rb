@@ -1,5 +1,5 @@
 class Tweet < ActiveRecord::Base
-  attr_accessible :answer, :celebrity_id, :tweet, :celebrity, :answers, :url, :populatetweet
+  attr_accessible :answer, :celebrity_id, :tweet, :celebrity, :answers, :url, :populatetweet, :post_regex
   belongs_to :celebrity
   has_many :answers
   serialize :answer, Array

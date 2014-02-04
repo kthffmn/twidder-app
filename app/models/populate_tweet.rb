@@ -1,5 +1,6 @@
 class PopulateTweet 
   attr_reader :client, :celebrity, :speller
+  attr_accessor :text
 
   def initialize(celebrity)
     @speller = FFI::Aspell::Speller.new('en_US')
@@ -112,7 +113,7 @@ class PopulateTweet
       text = remove_numbers(number_text)
       answer = apply_aspell(text)
       if store?(text, answer) && !curse_word?(object.text)
-        hash[object] = answer
+        hash[object] = [answer, text]
       end
     end 
     hash
@@ -123,8 +124,9 @@ class PopulateTweet
       Tweet.create(
         :celebrity_id => celebrity.id, 
         :tweet => object.text,
-        :answer => answer,
-        :url => object.uri.to_s 
+        :answer => answer[0],
+        :url => object.uri.to_s,
+        :post_regex => answer[1]
       )
     end
   end
