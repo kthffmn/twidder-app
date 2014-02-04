@@ -3,7 +3,7 @@ class AddPostRegexColumnToTweetsTable < ActiveRecord::Migration
     add_column :tweets, :post_regex, :string 
   end
 
-  def drown 
+  def down 
     remove_column :tweets, :post_regex
   end 
 end
