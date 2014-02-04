@@ -1,9 +1,10 @@
+
 class Answer < ActiveRecord::Base
   attr_accessible :correct, :guess, :tweet_id, :user_id, :user, :tweet
   belongs_to :user
   belongs_to :tweet
-	validates :guess, :presence => true, :length => { :maximum => 200, :message => "must be between 1 and 200 characters"}
-  
+	validates :guess, :presence => true, :length => { :maximum => 200, :message => "must have the same number of words as the tweet"}
+
   def rm_word_tweet(text)
     text.gsub(/tweet\S*/i, "")
     # "This is a tweet." => "This is a "
@@ -24,3 +25,8 @@ class Answer < ActiveRecord::Base
   end
 
 end
+
+# :equal_to 
+# guess_array = user.guess.split(" ")
+# tweet_array = tweet.tweet.split(" ")
+# guess_array.length == tweet_array.length

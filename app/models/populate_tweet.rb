@@ -61,9 +61,16 @@ class PopulateTweet
   end 
 
   def rm_u_word(tweet)
-    tweet.gsub(/.* u .*/, "")
+    regex = /\bu\b/i
+    if regex.match(tweet) != nil
+      tweet = ""
+    end 
     # "This guess has an u instead of a you." => ""
   end
+
+  def rm_elipses 
+    tweet.gsub(/[^\w\s]/, " ")
+  end 
 
   def misspelling?(tweet)
     Gingerice::Parser.new.parse(tweet)["result"]
@@ -108,7 +115,7 @@ class PopulateTweet
     get_all_objects.each do |object|
       puts index
       index += 1
-      text = rm_weird_characters(rm_u_word(rm_hashtags(rm_word_tweet(rm_url_tweets(rm_at_tweets(rm_rt_tweets(object.text)))))))
+      text = rm_weird_characters(rm_elipses(rm_u_word(rm_hashtags(rm_word_tweet(rm_url_tweets(rm_at_tweets(rm_rt_tweets(object.text))))))))
       answer = apply_aspell(text)
       if store?(text, answer) && !curse_word?(object.text)
         hash[object] = answer
