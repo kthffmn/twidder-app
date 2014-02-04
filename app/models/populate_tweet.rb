@@ -65,10 +65,6 @@ class PopulateTweet
     # "This guess has an u instead of a you." => ""
   end
 
-  # def misspelling?(tweet)
-  #   Gingerice::Parser.new.parse(tweet)["result"]
-  # end
-
   def curse_word?(tweet)
     Swearjar.default.profane?(tweet)
   end 
