@@ -11,9 +11,14 @@
   = @tweet.tweet
 %p
   %b Result:
-  = @answer.correct == false ? "Sorry! The correct answer is: '#{@tweet.answer}'": "You're smart!"
+  = @answer.correct == false ? "Sorry! The correct answer is: '#{Gingerice::Parser.new.@tweet.post_regex(tweet)["result"]}'": "You're smart!"
 %p
   %b Guess:
   = @answer.guess
 
 = link_to 'My Answers', user_answers_path(@user)
+
+
+/ def misspelling?(tweet)
+/ Gingerice::Parser.new.parse(tweet)["result"]
+/ end
