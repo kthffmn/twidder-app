@@ -369,8 +369,8 @@ h3 {
 .fakeWidget {
   font-family: 'Montserrat', sans-serif;
   position: relative;
-  width: 480px;
-  height: 160px;
+  width: 479px;
+  height: 200px;
   display: inline-block;
   background-color: white;
   color: black;
@@ -379,6 +379,7 @@ h3 {
   margin: 5px;
   border: solid grey 1.1px;
   border-color: rgb(238, 238, 238) rgb(221, 221, 221) rgb(187, 187, 187); border-width: 1px; border-style: solid; box-shadow: rgba(0, 0, 0, 0.14902) 0px 1px 3px;
+  margin: 0 23%;
 }
 
 .image {

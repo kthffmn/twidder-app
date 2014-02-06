@@ -2,7 +2,7 @@
   %b Gingerice Result:
   = @answer.correct == false ? "Sorry! The correct answer is: '#{Gingerice::Parser.new.parse(@tweet.post_regex)["result"]}'": "You're smart!"
 
-.tweet{:align => "center"}
+.realtweet{:align => "center"}
   %blockquote.twitter-tweet{:lang => "en"}
     %p= @tweet.tweet
     %a{:href => @tweet.url}link
@@ -32,6 +32,7 @@
       %i.fa.fa-retweet
     .star.icon.unclicked
       %i.fa.fa-star
+.br
   
 = link_to 'Play Again', new_user_answer_path(@user)
 
