@@ -1,10 +1,6 @@
 @import "bootstrap";
 @import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 7d0dc381be521d3101077eb27f9593521d1f64c9
 /* mixins, variables, etc. */
 
 $grayMediumLight: #eaeaea;
@@ -411,7 +407,6 @@ h3 {
   color: $blue;
 }
 
-<<<<<<< HEAD
 .name:hover {
   text-decoration: underline;
   cursor: pointer;
@@ -499,7 +494,8 @@ h3 {
   color: grey;
   left: 18px;
   bottom: 15px;
-=======
+}
+
 .fakeComposeTweet {
   position: relative;
   width: 520px;
@@ -556,7 +552,6 @@ h3 {
 
 .top p{
   margin-top: 10px;
->>>>>>> 7d0dc381be521d3101077eb27f9593521d1f64c9
 }
 
 .time:hover {
