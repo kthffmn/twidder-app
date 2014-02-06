@@ -1,4 +1,6 @@
-/ %p#notice= notice
+%p
+  %b Gingerice Result:
+  = @answer.correct == false ? "Sorry! The correct answer is: '#{Gingerice::Parser.new.parse(@tweet.post_regex)["result"]}'": "You're smart!"
 
 .tweet{:align => "center"}
   %blockquote.twitter-tweet{:lang => "en"}
@@ -6,19 +8,31 @@
     %a{:href => @tweet.url}link
   %script{:async => "", :charset => "utf-8", :src => "//platform.twitter.com/widgets.js"}
 
-%p
-  %b Tweet:
-  = @tweet.tweet
-%p
-  %b Gingerice Result:
-  = @answer.correct == false ? "Sorry! The correct answer is: '#{Gingerice::Parser.new.parse(@tweet.post_regex)["result"]}'": "You're smart!"
-  %p
-  %b Asspell Result:
-  = @answer.correct == false ? "Sorry! The correct answer is: '#{@tweet.answer}'": "You're smart!"
-%p
-  %b Guess:
-  = @answer.guess
-
+.fakeWidget
+  .image
+    = gravatar_for @user
+  .followButton
+    %a.twitter-follow-button{"data-show-count" => "false", "data-show-screen-name" => "false", :href => "https://twitter.com/twidder_app"}
+      Follow @twidder_app
+    :javascript
+      !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+  .name
+    = @user.name
+  .handle
+    = @user.email
+  .tweet
+    = @answer.guess
+  .line
+  .time
+    = @answer.created_at
+  .icons
+    .reply.icon.unclicked
+      %i.fa.fa-reply
+    .retweet.icon.unclicked
+      %i.fa.fa-retweet
+    .star.icon.unclicked
+      %i.fa.fa-star
+  
 = link_to 'Play Again', new_user_answer_path(@user)
 
 = link_to 'My Answers', user_answers_path(@user)
