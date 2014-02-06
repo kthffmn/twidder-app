@@ -43,6 +43,7 @@ class AnswersController < ApplicationController
   # POST /answers
   # POST /answers.json
   def create
+    # debugger
     @user = User.find(params[:user_id])
     @tweet = Tweet.find(params[:answer][:tweet_id])
     @answer = @user.answers.build(params[:answer])
