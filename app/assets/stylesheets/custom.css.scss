@@ -1,4 +1,7 @@
 @import "bootstrap";
+@import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
+
+
 /* mixins, variables, etc. */
 
 $grayMediumLight: #eaeaea;
@@ -308,6 +311,61 @@ h3 {
   color: $blue;
 }
 
+.fakeComposeTweet {
+  position: relative;
+  width: 520px;
+  height: 200px;
+  display: inline-block;
+  color: #7A879A;
+  background-color: #E4EEF4;
+  border: solid grey 1.1px;
+  border-color: rgb(238, 238, 238) rgb(221, 221, 221) rgb(187, 187, 187); border-width: 1px; border-style: solid; box-shadow: rgba(0, 0, 0, 0.14902) 0px 1px 3px;
+  border-radius: 7px;
+  margin: 0 23%;
+}
 
 
+#answer_guess {
+  position: absolute;
+  bottom: 50px;
+  right: 10px;
+  height: 80px;
+  width: 495px;
+}
+
+.submitButton{
+  background-color: rgb(46, 154, 194);
+  color: white;
+  width: 90px;
+  height: 40px;
+  border-radius: 5px;
+  box-shadow: none;
+  border: none;
+  font-size: 0.9em;
+  position: absolute;
+  right: 10px;
+  bottom: 2px;
+}
+
+.submitButton:hover{
+  background-color: rgb(0, 116,158);
+}
+
+.top {
+  background-color: #FFFFFF;
+  position: absolute;
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+  width: 520px;
+  border-bottom: 1px #9FD0E2 solid;
+  text-shadow: .75px .75px .75px rgba(150,150,150,.5);
+  font-size: .95em;
+  color: rgb(136,153,166);
+  height: 37px;
+  text-align: center;
+}
+
+.top p{
+  margin-top: 10px;
+}
 
