@@ -1,6 +1,6 @@
 = form_for [@user, @answer] do |f|
   - if @answer.errors.any?
-    #error_explanation
+    #error_explanation.error_explanation_for_answers_new
       %h2= "#{pluralize(@answer.errors.count, "error")} prohibited this answer from being saved:"
       %ul
         - @answer.errors.full_messages.each do |msg|
@@ -8,5 +8,5 @@
   .field
     = f.text_area :guess
     = f.hidden_field :tweet_id, value: @tweet.id
-  %button
+  .submit
     = f.submit 'Correct Tweet', :class => "submitButton"

@@ -1,5 +1,5 @@
 %p
-  %b Gingerice Result:
+  %b Result:
   = @answer.correct == false ? "Sorry! The correct answer is: '#{Gingerice::Parser.new.parse(@tweet.post_regex)["result"]}'": "You're smart!"
 
 %h2
