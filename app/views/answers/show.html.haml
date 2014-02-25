@@ -1,6 +1,9 @@
 %p
   %b Result:
-  = @answer.correct == false ? "Sorry! The correct answer is: '#{Gingerice::Parser.new.parse(@tweet.post_regex)["result"]}'": "You're smart!"
+  = @answer.correct == false ? "Sorry! This is the correct answer: ": "You're smart!"
+
+/ if @answer.correct is true, render lines 8-15, if not, render this:
+/ #{Gingerice::Parser.new.parse(@tweet.post_regex)["result"]}
 
 %h2
   Here is the original tweet:
@@ -10,6 +13,7 @@
     %a{:href => @tweet.url}link
   %script{:async => "", :charset => "utf-8", :src => "//platform.twitter.com/widgets.js"}
 %br
+
 %h2
   Here your correction:
 .fakeWidget
