@@ -3,5 +3,11 @@ class Celebrity < ActiveRecord::Base
   has_many :tweets
   has_many :answers, through: :tweets
 
-  # Scraper.new.add_to_database
+  def populate
+    Scraper.new.add_to_database
+  end
+
+  def add_twidder
+    Celebrity.create(:name => Twidder, :handle => twidder_app)
+  end 
 end
