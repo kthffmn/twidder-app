@@ -2,34 +2,3 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.buttonz {
-  display: inline-block;
-  background-color: powderblue;
-  border-radius: 5px;
-  box-shadow: none;
-  border: none;
-  font-size: 1em;
-  padding: 10px;
-}
-
-.buttonz:hover{
-  background-color: lightskyblue;
-}
-
-a {
-  color: white;
-}
-
-a:visited {
-  text-decoration:none;
-}
-
-a:hover {
-  text-decoration:none;
-  color: white;
-}
-
-a:active {
-  text-decoration:none;
-  color: white;
-}

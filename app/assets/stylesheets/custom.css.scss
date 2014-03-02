@@ -289,6 +289,57 @@ aside {
    z-index: 0;
 } 
 
+
+/* Home */
+.instuctions {
+  position: relative;
+  background-color: #EEEEEE;
+  width: 100%;
+  height: 850px;
+  border-radius: 7px;
+  font-size: 2em;
+  color: #333333;
+  line-height: 175%;
+}
+
+.straightowl {
+  position: absolute;
+  left: 720px;
+  top: 20px;
+}
+
+.simple {
+  position: absolute;
+  top: 141px;
+  left: 30px;
+}
+
+.pointingowl {
+  position: absolute;
+  left: 30px;
+  top: 300px;
+}
+
+.clicksignup {
+  position: absolute;
+  left: 500px;
+  top: 303px;
+  width: 400px;
+}
+
+.angleowl {
+  position: absolute;
+  left: 720px;
+  top: 525px;
+}
+
+.clickplay {
+  position: absolute;
+  top: 560px;
+  left: 123px;
+  width: 625px;
+}
+
 /* Twitter Widget */
 h3 {
   position: absolute;
