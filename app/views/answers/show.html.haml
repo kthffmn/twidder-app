@@ -1,8 +1,10 @@
 .centerz
   .resultz
     %b Result:
-    = @answer.correct == false ? "Sorry! The correct answer is: #{Gingerice::Parser.new.parse(@tweet.post_regex)["result"]}": "You're smart!"
-
+    = @answer.correct == false ? "Sorry! The correct answer is: #{Gingerice::Parser.new.parse(@tweet.post_regex)["result"]}": "Correct!"
+    .br
+    %b Score:
+    = "#{@user.score}"
 %h2
   Here is the original tweet:
 .realtweet{:align => "center"}
