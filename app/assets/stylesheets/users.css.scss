@@ -1,3 +1,31 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+a:visited {
+  text-decoration:none;
+  color: white;
+}
+
+a:hover {
+  text-decoration:none;
+  color: white;
+}
+
+a:active {text-decoration:none;}
+
+.buttonz {
+  display: inline-block;
+  background-color: #55acee;
+  color: white;
+  border-radius: 5px;
+  box-shadow: none;
+  border: none;
+  font-size: 1em;
+  padding: 10px;
+}
+
+.buttonz:hover{
+  background-color: #2795e9;
+}
