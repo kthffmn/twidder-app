@@ -15,7 +15,7 @@
 %br
 
 %h2
-  Here your correction:
+  Here is your correction:
 .fakeWidget
   .image
     = gravatar_for @user
@@ -42,6 +42,9 @@
       %i.fa.fa-star
 .br
   
-= link_to 'Play Again', new_user_answer_path(@user)
+.buttonz
+  = link_to 'My Answers', user_answers_path(@user)
 
-= link_to 'My Answers', user_answers_path(@user)
+.play.buttonz
+  = link_to 'Play Again', new_user_answer_path(@user)
+
