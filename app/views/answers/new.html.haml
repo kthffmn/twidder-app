@@ -1,4 +1,3 @@
-
 %h2
   Here is a tweet with a misspelling:
 .celebritytweet{:align => "center"}
@@ -14,6 +13,8 @@
     %p Compose Correction
   = render 'form'
 
-= link_to 'Back', user_answers_path(@user, @answer)
-
-= link_to 'Skip', new_user_answer_path(@user, @answer)
+.centerz
+  .buttonz
+    = link_to 'Back', user_answers_path(@user, @answer)
+  .buttonz
+    = link_to 'Skip', new_user_answer_path(@user, @answer)

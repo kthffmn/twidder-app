@@ -1,9 +1,7 @@
-%p
-  %b Result:
-  = @answer.correct == false ? "Sorry! This is the correct answer: ": "You're smart!"
-
-/ if @answer.correct is true, render lines 8-15, if not, render this:
-/ #{Gingerice::Parser.new.parse(@tweet.post_regex)["result"]}
+.centerz
+  .resultz
+    %b Result:
+    = @answer.correct == false ? "Sorry! The correct answer is: #{Gingerice::Parser.new.parse(@tweet.post_regex)["result"]}": "You're smart!"
 
 %h2
   Here is the original tweet:
@@ -41,10 +39,9 @@
     .star.icon.unclicked
       %i.fa.fa-star
 .br
-  
-.buttonz
-  = link_to 'My Answers', user_answers_path(@user)
 
-.play.buttonz
-  = link_to 'Play Again', new_user_answer_path(@user)
-
+.centerz
+  .buttonz
+    = link_to 'My Answers', user_answers_path(@user)
+  .buttonz
+    = link_to 'Play Again', new_user_answer_path(@user)
