@@ -20,6 +20,10 @@ test:
 
 production:
   adapter: postgresql
-  database: myapp_production
+  host: localhost
+  port: 5432
+  database: twidder
+  username: twidder
+  password: twidder
   pool: 5
   timeout: 5000

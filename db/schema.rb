@@ -31,9 +31,9 @@ ActiveRecord::Schema.define(:version => 20140204231818) do
 
   create_table "tweets", :force => true do |t|
     t.integer  "celebrity_id"
-    t.string   "tweet"
-    t.string   "answer"
-    t.string   "url"
+    t.text     "tweet"
+    t.text     "answer"
+    t.text     "url"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
     t.string   "post_regex"
