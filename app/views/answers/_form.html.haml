@@ -6,7 +6,7 @@
         - @answer.errors.full_messages.each do |msg|
           %li= msg
   .field
-    = f.text_area :guess
+    = f.text_area :guess, :spellcheck => "false"
     = f.hidden_field :tweet_id, value: @tweet.id
   .submit
     = f.submit 'Correct Tweet', :class => "submitButton"
