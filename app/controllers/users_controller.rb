@@ -8,7 +8,6 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.json { render json: @users }
     end
   end
 
@@ -17,7 +16,6 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.json { render json: @user }
     end
   end
 
@@ -26,7 +24,6 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.json { render json: @user }
     end
   end
 
@@ -42,10 +39,8 @@ class UsersController < ApplicationController
         sign_in @user
         flash[:success] = "Welcome to Twidder!"
         format.html { redirect_to @user }
-        format.json { render json: @user, status: :created, location: @user }
       else
         format.html { render action: "new" }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -58,10 +53,8 @@ class UsersController < ApplicationController
         flash[:success] = "Profile updated"
         sign_in @user
         format.html { redirect_to @user}
-        format.json { head :no_content }
       else
         format.html { render action: "edit" }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
   end

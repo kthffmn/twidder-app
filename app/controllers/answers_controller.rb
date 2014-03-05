@@ -6,7 +6,6 @@ class AnswersController < ApplicationController
     @answers = @user.answers
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @answers }
     end
   end
 
@@ -18,7 +17,6 @@ class AnswersController < ApplicationController
     @tweet = Tweet.find(@answer.tweet_id)
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @answer }
     end
   end
 
@@ -30,7 +28,6 @@ class AnswersController < ApplicationController
     @user = User.find(params[:user_id])
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @answer }
     end
   end
 
@@ -68,10 +65,8 @@ class AnswersController < ApplicationController
     respond_to do |format|
       if @answer.save
         format.html { redirect_to user_answer_path(@user, @answer), notice: 'Answer was successfully created.' }
-        format.json { render json: @answer, status: :created, location: @answer }
       else
         format.html { render action: "new" }
-        format.json { render json: @answer.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -84,10 +79,8 @@ class AnswersController < ApplicationController
     respond_to do |format|
       if @answer.update_attributes(params[:answer])
         format.html { redirect_to user_answer_path(@user, @answer), notice: 'Answer was successfully updated.' }
-        format.json { head :no_content }
       else
         format.html { render action: "edit" }
-        format.json { render json: @answer.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -100,7 +93,6 @@ class AnswersController < ApplicationController
     @answer.destroy
     respond_to do |format|
       format.html { redirect_to user_answers_url }
-      format.json { head :no_content }
     end
   end
 end
