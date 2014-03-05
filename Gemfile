@@ -55,6 +55,6 @@ end
 # gem 'capistrano'
 
 # To use debugger
-gem 'debugger'
+# gem 'debugger'
 
 ruby '2.0.0'
