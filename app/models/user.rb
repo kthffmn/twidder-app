@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   has_many :answers
 
   before_save { |user| user.email = email.downcase }
-  before_save :create_remember_token
+  before_create :create_remember_token
 
   validates :name, :presence => true, :format => {:with => /[a-z]/i, :message => "must only have letters"}, :length => { :minimum => 2, :message => "must have at least 2 characters" } 
 

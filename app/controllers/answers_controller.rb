@@ -48,7 +48,7 @@ class AnswersController < ApplicationController
     regex_2 = regex_1.gsub(/[^\w ']/, "") # removes all but numbers, letters, and ' <= those things
     regex_3 = regex_2.gsub(/(\d)/,"") # removes numbers
     my_answer = regex_3.split(" ") # => ["I", "love", "u"]
-    index = 0 
+    index = 0
     if my_answer.length == @tweet.answer.length
       @answer.correct = true
       my_answer.each do |word|
