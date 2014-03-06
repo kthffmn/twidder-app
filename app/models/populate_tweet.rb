@@ -1,10 +1,11 @@
 class PopulateTweet 
-  attr_reader :client, :celebrity, :speller
+  attr_reader :client, :celebrity, :speller, :ids
   attr_accessor :text
 
-  def initialize(celebrity)
+  def initialize(celebrity, ids=[])
     @speller = FFI::Aspell::Speller.new('en_US')
     @celebrity = celebrity
+    @ids = ids
     @client = Twitter::REST::Client.new do |config|
       config.consumer_key        = 'kA7yw9y4aqFEM15GIXLbw'
       config.consumer_secret     = 'TQk5mpu2kQXz3jElUUfAERaEKkQS4m46GhqWoJ6OJA'
@@ -20,11 +21,15 @@ class PopulateTweet
   end
 
   def get_all_objects
-    collect_with_max_id do |max_id|
-      options = {:count => 200, :include_rts => false}
-      options[:max_id] = max_id unless max_id.nil?
-      puts celebrity.handle, max_id
-      @client.user_timeline(celebrity.handle, options)
+    if ids
+      client.statuses(ids)
+    else
+      collect_with_max_id do |max_id|
+        options = {:count => 200, :include_rts => false}
+        options[:max_id] = max_id unless max_id.nil?
+        puts celebrity.handle, max_id
+        @client.user_timeline(celebrity.handle, options)
+      end
     end
   end
 
