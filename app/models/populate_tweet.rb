@@ -5,6 +5,7 @@ class PopulateTweet
   def initialize(celebrity, ids=[])
     @speller = FFI::Aspell::Speller.new('en_US')
     @celebrity = celebrity
+    @ids = ids
     @client = Twitter::REST::Client.new do |config|
       config.consumer_key        = 'kA7yw9y4aqFEM15GIXLbw'
       config.consumer_secret     = 'TQk5mpu2kQXz3jElUUfAERaEKkQS4m46GhqWoJ6OJA'
